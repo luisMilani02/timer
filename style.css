@@ -1,0 +1,125 @@
+:root {
+    --cor-botao: rgba(0, 0, 0, 0.5);
+    --font-size: 18px; 
+    --padding-sel: 30px;
+}
+
+body {
+    text-align: center;
+    font-family: verdana, Helvetica, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-top: 0;
+    /* background-image: url(imgs/wpp.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center; */
+    padding: 3vh;
+    background-color: #1e1e1e;
+}
+
+h1 {
+    margin-top: 10px;
+    color: whitesmoke;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.08);
+    /* backdrop-filter: blur(1px); */
+    border-radius: 25px;
+    padding: 5px;
+    /* box-shadow: 25px; */
+    height: 85vh;
+    padding-top: 2vh;
+}
+
+.container h2 {
+    font-size: var(--font-size);
+    color: white;
+}
+
+.container select {
+    margin-bottom: 50px;
+    padding-left: var(--padding-sel);
+    padding-right: var(--padding-sel);
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: .1px solid rgba(145, 145, 145, 0.5);
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+
+button {
+    background-color: var(--cor-botao);
+    padding: 10px 80px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
+    font-size: var(--font-size);
+    cursor: pointer;
+    margin-top: 100px;
+}
+
+button:hover {
+    transition: 500ms;
+    color: rgb(190, 190, 190);
+    border-color: rgb(190, 190, 190);
+}
+
+div h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: whitesmoke;
+    font-size:75px;
+    margin: 15px;
+}
+
+.cima {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.left {
+    margin-right: 45px;
+}
+
+.right {    
+    margin-left: 45px;
+}
+
+option {
+    background-color: rgba(0, 0, 0, 0.151);
+}
+
+@media(max-width: 600px){
+    body {
+        padding: 2vw;
+    }
+
+    .container {
+        height: 80vh;
+    }
+}
+
+@media (max-width: 450px){
+    body {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .left {
+        margin-right: 25px;
+    }
+    
+    .right {    
+        margin-left: 25px;
+    }
+
+    button {
+        padding: 10px 50px;
+    }
+}

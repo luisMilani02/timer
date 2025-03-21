@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="audio" src="alarme.mp3"></audio>
+
+    <main class="container">
+        <h1>Timer</h1>
+        <div class="cima">
+            <div class="hr">
+                <h2>Horas</h2>
+                <input type="number" name="horas" id="horas" value="">
+            </div>
+
+            <div class="min">
+                <h2>Minutos</h2>
+                <input type="number" name="minutos"  value="" id="minutos">
+            </div>
+
+            <div class="sec">
+                <h2>Segundos</h2>
+                <input type="number" name="segundos"  value="" id="segundos">
+            </div>
+        </div>
+
+        <div class="baixo">
+            <button id='comecar' onclick="comecar()">Começar</button>
+            <div id="display">
+                <h3 style="opacity: 0.0;">00</h3>
+            </div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

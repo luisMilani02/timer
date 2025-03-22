@@ -1,15 +1,21 @@
 let horas = document.getElementById('horas')
 let minutos = document.getElementById('minutos')
 let segundos = document.getElementById('segundos')
-let parar = document.getElementById('parar')
+let pausa = document.getElementById('pause')
 let resetar = document.getElementById('resetar')
+let zerar = document.getElementById('zerar')
+let comecar = document.getElementById('comecar')
 let titulo = document.getElementById('titulo')
+let invaTxt = document.getElementById('invalido')
+let body = document.getElementById('body')
 let horaInicial, minutoInicial, segundoInicial
 let rodando = false
 let tempoTotal = 0;
 let tempo
 
-parar.addEventListener('click', para)
+comecar.addEventListener('click', comeca)
+zerar.addEventListener('click', zera)
+pausa.addEventListener('click', pause)
 resetar.addEventListener('click', reseta)
 
 function values() {
@@ -23,27 +29,38 @@ function values() {
 function comeca() {    
     let { horaAtual, minutoAtual, segundoAtual } = values();
 
-    horaInicial = horaAtual;
-    minutoInicial = minutoAtual;
-    segundoInicial = segundoAtual;
+    coresNormal()
 
-    horaAtual = horaAtual * 60 * 60;
-    minutoAtual = minutoAtual * 60;
-    tempoTotal = horaAtual+minutoAtual+segundoAtual;
+    if (rodando == false) {
+        horaInicial = horaAtual;
+        minutoInicial = minutoAtual;
+        segundoInicial = segundoAtual;
 
-    if (tempoTotal == 0) {
-        invalido()
+        horaAtual = horaAtual * 60 * 60;
+        minutoAtual = minutoAtual * 60;
+        tempoTotal = horaAtual+minutoAtual+segundoAtual;
+
+        if (tempoTotal == 0) {
+            invalido()
+        } else {
+            console.log(`tempo total: ${tempoTotal}`)
+                
+            invaTxt.style.visibility = 'hidden'
+
+            tempo = setInterval(() => {
+                tempoTotal--;
+                console.log(tempoTotal)
+                temp()
+                rodando = true
+                cores()
+                if (tempoTotal <= 0) {
+                    clearInterval(tempo)
+                    rodando = false
+                }
+            }, 1000);
+        }
     } else {
-        console.log(`tempo total: ${tempoTotal}`)
-
-        tempo = setInterval(() => {
-            tempoTotal--;
-            console.log(tempoTotal)
-            temp()
-            if (tempoTotal <= 0) {
-                clearInterval(tempo)
-            }
-        }, 1000);
+        acabar()
     }
 }
 
@@ -73,10 +90,11 @@ function temp() {
     }
 }
 
-function para() {
+function pause() {
     let { horaAtual, minutoAtual, segundoAtual } = values();
 
     clearInterval(tempo)
+    coresNormal()
 
     if (segundoAtual <= 9) {
         segundos.value = '0' + segundoAtual
@@ -95,10 +113,13 @@ function para() {
     } else {
         horas.value = horaAtual
     }
+
+    rodando = false
 }
 
 function reseta() {
     clearInterval(tempo)
+    coresNormal()
 
     if (horaInicial <= 9) {
         horas.value = '0' + horaInicial
@@ -117,14 +138,76 @@ function reseta() {
     } else {
         segundos.value = segundoInicial
     }
+
+    rodando = false
+}
+
+function zera() {
+    clearInterval(tempo)
+    coresNormal()
+
+    segundos.value = "00"
+    minutos.value = "00"
+    horas.value = "00"
+
+    rodando = false
+}
+
+function cores() {
+    let cores = ['red', 'orange', 'yellow', 'green', 'blue']
+    let x = tempoTotal
+
+    cores.reverse()
+
+    if (tempoTotal <= 5) {
+        x -= 1
+        console.log(cores[x])
+        body.style.backgroundColor = cores[x]
+        if (x == 0) {
+            body.style.backgroundColor = 'red'
+            setTimeout(() => {coresNormal()}, 500)
+            body.style.backgroundColor = 'red'
+            setTimeout(() => {coresNormal()}, 500)
+            body.style.backgroundColor = 'red'
+            setTimeout(() => {coresNormal()}, 500)
+            body.style.backgroundColor = 'red'
+            setTimeout(() => {coresNormal()}, 500)
+        }
+    }
+}
+
+function coresNormal() {
+    return body.style.backgroundColor = '#121519'
 }
 
 function invalido() {
-    let invaTxt = document.getElementById('invalido')
-    
-    invaTxt.style.display = 'block'
+    let erroMsg = document.getElementById('erroMsg')
+
+    erroMsg.textContent = ''
+    erroMsg.textContent = 'Valor inválido!'
+
+    invaTxt.style.fontSize = '15px'
+    invaTxt.style.visibility = 'visible'
 
     setTimeout(() => {
-        invaTxt.style.display = 'none'        
-    }, 15000);
+        invaTxt.style.visibility = 'hidden'
+    }, 10000);
+}
+
+function acabar() {
+    let erroMsg = document.getElementById('erroMsg')
+    
+    erroMsg.textContent = ''
+    erroMsg.textContent = 'Espere acabar!'
+    
+    invaTxt.style.fontSize = '15px'
+    invaTxt.style.visibility = 'visible'
+    
+    setTimeout(() => {
+        invaTxt.style.visibility = 'hidden'
+    }, 10000);
+}
+
+function pagina() {
+    window.open('https://luisgprojects.wuaze.com', '_blank')
 }

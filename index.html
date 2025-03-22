@@ -7,41 +7,50 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="body">
     <audio id="audio" src="alarme.mp3"></audio>
 
+    <div id="invalido" class="inva">
+        <h2 id="erroMsg"></h2>
+    </div>
+
     <header>
-        <h1>Timer</h1>
-        
-        <h2 id="invalido">Insira um valor válido</h2>
+        <div class="titulo">
+            <h1>Timer</h1>
+        </div>
     </header>
 
     <main class="container">
-        <div class="cima">
+        <section class="cima">
             <div class="hr">
-                <h2>Horas</h2>
-                <input type="number" name="horas" id="horas" value="00">
+                <input type="number" name="horas" id="horas" value="00" maxlength="2">
+                <h2 class="temp" style="font-size: 14px;">Horas</h2>
             </div>
+            
+            <p class="dois-pontos">:</p>
 
             <div class="min">
-                <h2>Minutos</h2>
-                <input type="number" name="minutos"  value="00" id="minutos">
+                <input type="number" name="minutos"  value="00" id="minutos" maxlength="2">
+                <h2 class="temp" style="font-size: 14px;">Minutos</h2>
             </div>
+            
+            <p class="dois-pontos">:</p>
 
             <div class="sec">
-                <h2>Segundos</h2>
-                <input type="number" name="segundos"  value="00" id="segundos">
+                <input type="number" name="segundos"  value="00" id="segundos"maxlength="2">
+                <h2 class="temp" style="font-size: 14px;">Segundos</h2>
             </div>
-        </div>
+        </section>
 
-        <div class="baixo">
-            <button id='comecar' onclick="comeca()">Começar</button>
-            <button id='parar'>Parar</button>
-            <button id='resetar'>Resetar</button>
-        </div>
+        <section class="baixo">
+            <button id='comecar'><img src="imgs/play.svg" height="100%" width="100%" alt="Play"></button>
+            <button id='pause'><img src="imgs/pause.svg" height="100%" width="100%" alt="Pause"></button>
+            <button id='resetar'><img src="imgs/reset.svg" height="100%" width="100%" alt="Resetar"></button>
+            <button id="zerar"><img src="imgs/cancel.svg" height="100%" width="100%" alt="Zerar"></button>
+        </section>
     </main>
 
-    <footer>
+    <footer onclick="pagina()">
         <p>&copy; LuisG Milani</p>
     </footer>
     

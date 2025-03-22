@@ -11,11 +11,6 @@ body {
     flex-wrap: wrap;
     flex-direction: column;
     padding-top: 0;
-    /* background-image: url(imgs/wpp.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center center; */
     padding: 3vh;
     background-color: #1e1e1e;
 }
@@ -25,31 +20,33 @@ h1 {
     color: whitesmoke;
 }
 
-.container {
-    background-color: rgba(255, 255, 255, 0.08);
-    /* backdrop-filter: blur(1px); */
-    border-radius: 25px;
-    padding: 5px;
-    /* box-shadow: 25px; */
-    height: 85vh;
-    padding-top: 2vh;
+header {
+    position: fixed;
+    margin-bottom: auto;
+    width: 100%;
+    height: 75px;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    background-color: aqua;
+    margin-top: 0;
+
+}
+
+main {
+    margin-top: 75px;
+}
+
+
+#invalido {
+    display: none;
+    color: black;
 }
 
 .container h2 {
     font-size: var(--font-size);
     color: white;
-}
-
-.container select {
-    margin-bottom: 50px;
-    padding-left: var(--padding-sel);
-    padding-right: var(--padding-sel);
-    border-radius: 7px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: .1px solid rgba(145, 145, 145, 0.5);
-    font-size: 20px;
-    color: white;
-    text-align: center;
 }
 
 button {
@@ -89,10 +86,6 @@ div h3 {
 
 .right {    
     margin-left: 45px;
-}
-
-option {
-    background-color: rgba(0, 0, 0, 0.151);
 }
 
 @media(max-width: 600px){

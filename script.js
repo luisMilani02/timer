@@ -31,7 +31,7 @@ function comeca() {
     minutoAtual = minutoAtual * 60;
     tempoTotal = horaAtual+minutoAtual+segundoAtual;
 
-    if (tempoTotal <= 0) {
+    if (tempoTotal == 0) {
         invalido()
     } else {
         console.log(`tempo total: ${tempoTotal}`)
@@ -122,5 +122,9 @@ function reseta() {
 function invalido() {
     let invaTxt = document.getElementById('invalido')
     
-    
+    invaTxt.style.display = 'block'
+
+    setTimeout(() => {
+        invaTxt.style.display = 'none'        
+    }, 15000);
 }

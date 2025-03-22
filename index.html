@@ -10,30 +10,34 @@
 <body>
     <audio id="audio" src="alarme.mp3"></audio>
 
-    <main class="container">
+    <header>
         <h1>Timer</h1>
+        
+        <h2 id="invalido">Insira um valor válido</h2>
+    </header>
+
+    <main class="container">
         <div class="cima">
             <div class="hr">
                 <h2>Horas</h2>
-                <input type="number" name="horas" id="horas" value="">
+                <input type="number" name="horas" id="horas" value="00">
             </div>
 
             <div class="min">
                 <h2>Minutos</h2>
-                <input type="number" name="minutos"  value="" id="minutos">
+                <input type="number" name="minutos"  value="00" id="minutos">
             </div>
 
             <div class="sec">
                 <h2>Segundos</h2>
-                <input type="number" name="segundos"  value="" id="segundos">
+                <input type="number" name="segundos"  value="00" id="segundos">
             </div>
         </div>
 
         <div class="baixo">
-            <button id='comecar' onclick="comecar()">Começar</button>
-            <div id="display">
-                <h3 style="opacity: 0.0;">00</h3>
-            </div>
+            <button id='comecar' onclick="comeca()">Começar</button>
+            <button id='parar'>Parar</button>
+            <button id='resetar'>Resetar</button>
         </div>
     </main>
     

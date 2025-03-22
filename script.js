@@ -15,8 +15,9 @@ let tempo
 
 comecar.addEventListener('click', comeca)
 zerar.addEventListener('click', zera)
-pausa.addEventListener('click', pause)
+pausa.addEventListener('click', pausar)
 resetar.addEventListener('click', reseta)
+body.addEventListener('click', corNorm)
 
 function values() {
     let horaAtual = Number(horas.value) || 0
@@ -29,7 +30,7 @@ function values() {
 function comeca() {    
     let { horaAtual, minutoAtual, segundoAtual } = values();
 
-    coresNormal()
+    body.style.backgroundColor = '#121519'
 
     if (rodando == false) {
         horaInicial = horaAtual;
@@ -90,12 +91,12 @@ function temp() {
     }
 }
 
-function pause() {
+function pausar() {
     let { horaAtual, minutoAtual, segundoAtual } = values();
 
+    body.style.backgroundColor = '#121519'
     clearInterval(tempo)
-    coresNormal()
-
+    
     if (segundoAtual <= 9) {
         segundos.value = '0' + segundoAtual
     } else {
@@ -118,8 +119,8 @@ function pause() {
 }
 
 function reseta() {
+    body.style.backgroundColor = '#121519'
     clearInterval(tempo)
-    coresNormal()
 
     if (horaInicial <= 9) {
         horas.value = '0' + horaInicial
@@ -143,8 +144,8 @@ function reseta() {
 }
 
 function zera() {
+    body.style.backgroundColor = '#121519'
     clearInterval(tempo)
-    coresNormal()
 
     segundos.value = "00"
     minutos.value = "00"
@@ -154,30 +155,23 @@ function zera() {
 }
 
 function cores() {
-    let cores = ['red', 'orange', 'yellow', 'green', 'blue']
+    let cores = ['#242424', '#303030', '#383838']
     let x = tempoTotal
 
     cores.reverse()
 
-    if (tempoTotal <= 5) {
+    if (tempoTotal <= 3) {
         x -= 1
         console.log(cores[x])
         body.style.backgroundColor = cores[x]
-        if (x == 0) {
-            body.style.backgroundColor = 'red'
-            setTimeout(() => {coresNormal()}, 500)
-            body.style.backgroundColor = 'red'
-            setTimeout(() => {coresNormal()}, 500)
-            body.style.backgroundColor = 'red'
-            setTimeout(() => {coresNormal()}, 500)
-            body.style.backgroundColor = 'red'
-            setTimeout(() => {coresNormal()}, 500)
+        if (tempoTotal == 0) {
+            body.style.backgroundColor = '#940b05'
         }
     }
 }
 
-function coresNormal() {
-    return body.style.backgroundColor = '#121519'
+function corNorm() {
+    body.style.backgroundColor = '#121519'
 }
 
 function invalido() {
@@ -199,8 +193,8 @@ function acabar() {
     
     erroMsg.textContent = ''
     erroMsg.textContent = 'Espere acabar!'
-    
-    invaTxt.style.fontSize = '15px'
+    erroMsg.style.fontSize = '10px'
+
     invaTxt.style.visibility = 'visible'
     
     setTimeout(() => {
